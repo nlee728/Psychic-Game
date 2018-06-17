@@ -10,6 +10,13 @@ var computerChoice = letter[Math.floor(Math.random() * letter.length)];
 //Test to see the computer choice
 console.log("Correct Letter: " + computerChoice);
 
+function reset() {
+    computerChoice = letter[Math.floor(Math.random() * letter.length)];
+            console.log("Correct Letter: " + computerChoice);
+            guesses = 15;
+            guessesSoFar = [];
+}
+
 
 // game begins when user presses a key (also converts upper case to lower case)
 document.onkeyup = function (userClick) {
@@ -23,10 +30,7 @@ document.onkeyup = function (userClick) {
         if (userGuess === computerChoice) {
             wins += 1;
             alert("Wow! You truly are psychic!");
-            computerChoice = letter[Math.floor(Math.random() * letter.length)];
-            console.log("Correct Letter: " + computerChoice);
-            guesses = 15;
-            guessesSoFar = [];
+            reset();
         }
 
     
@@ -38,10 +42,7 @@ document.onkeyup = function (userClick) {
             if (guesses < 1){
                 losses++;
                 alert("Hmmm, maybe you aren't psychic after all..." );
-                computerChoice = letter[Math.floor(Math.random() * letter.length)];
-                console.log("Correct Letter: " + computerChoice);
-                guesses = 15;
-                guessesSoFar = [];
+                reset();
             }
         }
     }
