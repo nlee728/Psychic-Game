@@ -1,52 +1,54 @@
-     // Creates an array that lists out all of the letter options.
-     var computerChoices = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
-    
-     // Creating variables to hold the number of wins, losses, and ties. They start at 0.
-     var wins = 0;
-     var losses = 0;
-     var guessesLeft = 10;
-     var guessesSoFar = [];
+//defines the global variables
+var letter = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
+var wins = 0;
+var losses = 0;
+var guesses = 15;
+var guessesSoFar = [];
+
+//computer chooses a random letter
+var computerChoice = letter[Math.floor(Math.random() * letter.length)];
+//Test to see the computer choice
+console.log("Correct Letter: " + computerChoice);
+
+
+// game begins when user presses a key (also converts upper case to lower case)
+document.onkeyup = function (userClick) {
+    var userGuess = userClick.key.toLowerCase();
+
+    // game begins only if the user presses a letter key
+    if (letter.includes(userGuess)) {
+        guessesSoFar.push(userGuess);
+
+        //if user guesses correctly, add a win and choose a new letter
+        if (userGuess === computerChoice) {
+            wins += 1;
+            alert("Wow! You truly are psychic!");
+            computerChoice = letter[Math.floor(Math.random() * letter.length)];
+            console.log("Correct Letter: " + computerChoice);
+            guesses = 15;
+            guessesSoFar = [];
+        }
 
     
-     // This function is run whenever the user presses a key.
-     document.onkeyup = function(event) {
-      
-      // Determines which key was pressed.
-       var userGuess = event.key.toLowerCase();
-       
-       // Randomly chooses a letter from the options array. This is the Computer's guess.
-       var computerGuess = computerChoices[Math.floor(Math.random() * computerChoices.length)];
+        //if user guesses incorrectly, remove one from guesses remaining
+        else {
+            guesses -= 1;
 
-       
-         // If the user guesses the computer's letter, increment our wins variable.
-         if (userGuess === computerGuess) {
-           wins++;
-           guessesLeft = 10;
-           guessesSoFar = [];
-           alert("Wow! You really must be psychic!");
-         }
-         // If the user guesses incorrectly, increment our losses variable.
-         else {
-           guessesLeft--;
-           // Takes the user's response and pushes the variable to the end of the GuessesSoFar array.
-          //  userGuess.append(guessesSoFar);
-         }
-          //When there are no more guesses left, alert the user that the game is over and reset.
-         if (guessesLeft = 0) {
-           losses++;
-           guessesLeft = 10;
-           guessesSoFar = [];
-           alert("Perhaps you're not quite psychic...");
-         }
-         
-         
-         // Creating a variable to hold our new HTML. Our HTML now keeps track of the user and computer guesses, and wins/losses/ties.
-         var html =
-           "<p>Wins: " + wins + "</p>" +
-           "<p>Losses: " + losses + "</p>" +
-           "<p>Guesses Left: " + guessesLeft + "</p>";
-           "<p>Guesses So Far: " + guessesSoFar + "</p>";
-          
-         // Set the inner HTML contents of the #game div to our html string
-         document.querySelector("#game").innerHTML = html;
-     };
+            //when no more guesses are left, the user loses and choose a new letter
+            if (guesses < 1){
+                losses++;
+                alert("Hmmm, maybe you aren't psychic after all..." );
+                computerChoice = letter[Math.floor(Math.random() * letter.length)];
+                console.log("Correct Letter: " + computerChoice);
+                guesses = 15;
+                guessesSoFar = [];
+            }
+        }
+    }
+    //show the counter variables in the html 
+    document.getElementById("win-count").innerHTML = wins;
+    document.getElementById("loss-count").innerHTML = losses;
+    document.getElementById("guesses-left").innerHTML = guesses;
+    document.getElementById("guesses-so-far").innerHTML = guessesSoFar;
+
+}
