@@ -1,18 +1,46 @@
 # Psychic-Game
 
-2. You're going to make a game just like the one in the video. Essentially, the app randomly picks a letter, and the user has to guess which letter the app chose. Put the following text on your page:
+> This app runs in the browser, and features dynamically updated HTML and CSS powered by JavaScript code.
 
-3. Guess what letter I'm thinking of
+## Getting Started
 
-4. Wins: (# of times the user has guessed the letter correctly)
+1. Press any key to get started!
 
-5. Losses: (# of times the user has failed to guess the letter correctly after exhausting all guesses)
+2. The app randomly picks a letter, and the user has to guess which letter the app chose.
 
-6. Guesses Left: (# of guesses left. This will update)
+3. After the user wins/loses the game will automatically choose another word and restart play and wins/losses will increment.
 
-7. Your Guesses So Far: (the specific letters that the user typed. Display these until the user either wins or loses.)
 
-8. When the player wins, increase the Wins counter and start the game over again (without refreshing the page).
+## Features
 
-9. When the player loses, increase the Losses counter and restart the game without a page refresh (just like when the user wins).
+This app tracks:
+* Wins: (# of times the user has guessed the letter correctly)
 
+* Losses: (# of times the user has failed to guess the letter correctly after exhausting all guesses)
+
+* Guesses Left: (# of guesses left. This will update)
+
+* Your Guesses So Far: (the specific letters that the user typed. Display these until the user either wins or loses.)
+
+
+## Deployment
+
+Play the game [here](https://nlee728.github.io/Psychic-Game/)!
+
+## Built With
+
+* HTML/CSS
+* Bootstrap
+* jQuery/Javascript
+
+## Authors
+
+* **Nutishia Lee** - [nlee728](https://github.com/nlee728)
+
+## Related projects
+
+Here's a list of other related projects:
+
+- [Word Guess Game](https://github.com/nlee728/Word-Guess-Game)
+- [Crystals Collector](https://github.com/nlee728/Unit-4-Game)
+- [Trivia Game](https://github.com/nlee728/TriviaGame)
